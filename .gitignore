@@ -31,3 +31,6 @@ logs/
 inventory.ini
 .env
 .backup_filename
+
+# Custom integrations
+download
