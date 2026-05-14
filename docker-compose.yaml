@@ -4,6 +4,7 @@ services:
     image: itzg/minecraft-server:latest
     container_name: minedoscrazy-minecraft
     restart: unless-stopped
+    pull_policy: always
     user: "${UID:-1000}:${GID:-1000}"
     profiles:
       - minecraft
@@ -90,6 +91,7 @@ services:
     image: ghcr.io/bluemap-minecraft/bluemap:latest
     container_name: minedoscrazy-bluemap
     restart: unless-stopped
+    pull_policy: always
     command: -r -u -w
     profiles:
       - web
@@ -112,6 +114,7 @@ services:
     image: portainer/portainer-ce:latest
     container_name: minedoscrazy-portainer
     restart: unless-stopped
+    pull_policy: always
     profiles:
       - docker-admin
     security_opt:
@@ -130,6 +133,7 @@ services:
     image: ghcr.io/dirien/minecraft-exporter:latest
     container_name: minedoscrazy-minecraft-exporter
     restart: unless-stopped
+    pull_policy: always
     user: "${UID:-1000}:${GID:-1000}"
     profiles:
       - monitoring
@@ -151,6 +155,7 @@ services:
     image: prom/node-exporter:latest
     container_name: minedoscrazy-node-exporter
     restart: unless-stopped
+    pull_policy: always
     user: "${UID:-1000}:${GID:-1000}"
     profiles:
       - monitoring
@@ -172,6 +177,7 @@ services:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: minedoscrazy-cadvisor
     restart: unless-stopped
+    pull_policy: always
     privileged: true
     profiles:
       - monitoring
@@ -237,6 +243,7 @@ services:
     image: grafana/promtail:latest
     container_name: minedoscrazy-promtail
     restart: unless-stopped
+    pull_policy: always
     command: -config.file=/etc/promtail/config.yml
     user: root
     depends_on:
