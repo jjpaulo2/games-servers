@@ -2,7 +2,6 @@ services:
 
   minecraft:
     image: itzg/minecraft-server:latest
-    container_name: minedoscrazy-minecraft
     restart: unless-stopped
     pull_policy: always
     user: "${UID:-1000}:${GID:-1000}"
