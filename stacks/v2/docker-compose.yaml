@@ -1,0 +1,86 @@
+services:
+
+  minecraft:
+    image: itzg/minecraft-server:latest
+    container_name: minedoscrazy-minecraft
+    restart: unless-stopped
+    pull_policy: always
+    user: "${UID:-1000}:${GID:-1000}"
+    ports:
+      - "25565:25565"
+    volumes:
+      - minecraft_data:/data
+    environment:
+      EULA: TRUE
+
+      SERVER_NAME: Mine dos Crazy
+      MOTD: "Owwwwwwwww §aStoneMask§r..."
+      ICON: https://i.scdn.co/image/ab67616d0000b27332ff042034155f8757459ddb
+
+      VERSION: 26.1
+      ONLINE_MODE: false
+      MAX_PLAYERS: 12
+      ENABLE_COMMAND_BLOCK: false
+      DIFFICULTY: normal
+      PVP: true
+      MODE: survival
+      LEVEL_TYPE: minecraft:default
+      SPAWN_NPCS: true
+      SPAWN_ANIMALS: true
+      SPAWN_MONSTERS: true
+      GENERATE_STRUCTURES: true
+      ALLOW_NETHER: true
+      ANNOUNCE_PLAYER_ACHIEVEMENTS: true
+      ALLOW_FLIGHT: false
+      ENABLE_WHITELIST: true
+      VIEW_DISTANCE: 12
+      SIMULATION_DISTANCE: 10
+
+      ENABLE_RCON: true
+      RCON_PORT: 25575
+      RCON_PASSWORD: ${RCON_PASSWORD:-minedoscrazy}
+
+      MEMORY: 6G
+      MAX_MEMORY: 20G
+      JVM_XX_OPTS: "-XX:+UseG1GC -XX:ParallelGCThreads=8 -XX:MaxGCPauseMillis=200"
+      TZ: America/Sao_Paulo
+
+      TYPE: FABRIC
+      FABRIC_FORCE_REINSTALL: true
+      MODRINTH_ALLOWED_VERSION_TYPE: alpha
+      MODRINTH_DOWNLOAD_DEPENDENCIES: required
+      MODRINTH_PROJECTS: |
+        fabric-api
+        lithium
+        c2me-fabric
+        scalablelux
+        ferrite-core
+        packet-fixer
+        disconnect-packet-fix
+        vmp-fabric
+        krypton
+        inventory-management
+        alternate-current
+        easyauth
+        easywhitelist
+        luckperms
+        vanilla-permissions
+
+      # RCON_CMDS_STARTUP: |
+      #   lp group default permission set luckperms.* false
+      #   lp group default permission set minecraft.* false
+      #   lp group default permission set easywhitelist.* false
+      #   lp group default permission set easyauth.* false
+      #   lp group default permission set easyauth.commands.login true
+      #   lp creategroup admin
+      #   lp group admin permission set minecraft.command.ban-ip true
+      #   lp group admin permission set minecraft.command.pardon-ip true
+      #   lp group admin permission set minecraft.command.kick true
+      #   lp group admin permission set easyauth.commands.auth true
+      #   lp group admin permission set easyauth.commands.logout true
+      #   lp group admin permission set easywhitelist.commands.easyban true
+      #   lp group admin permission set easywhitelist.commands.easypardon true
+      #   lp group admin permission set easywhitelist.commands.easywhitelist true
+
+volumes:
+  minecraft_data:
