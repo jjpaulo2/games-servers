@@ -1,0 +1,12 @@
+containers:
+  minecraft:
+    keywords:
+      - keyword: "Preparing spawn area: 100%"
+        notification_title: "🎮 Servidor Minecraft ligado"
+        notification_message: "Você já pode se conectar ao servidor!"
+
+      - keyword: "Server empty for 60 seconds, pausing"
+        action: stop
+        action_cooldown: 60
+        notification_title: "🎮 Servidor Minecraft desligado"
+        notification_message: "Nenhum jogador online. O servidor foi encerrado."

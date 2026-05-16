@@ -1,5 +1,13 @@
 services:
 
+  loggifly:
+    image: ghcr.io/clemcer/loggifly:v2
+    environment:
+      APPRISE_URL: "${APPRISE_URL:-}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./config/loggifly:/config
+
   minecraft:
     image: itzg/minecraft-server:latest
     restart: unless-stopped
@@ -64,22 +72,6 @@ services:
         easywhitelist
         luckperms
         vanilla-permissions
-
-      # RCON_CMDS_STARTUP: |
-      #   lp group default permission set luckperms.* false
-      #   lp group default permission set minecraft.* false
-      #   lp group default permission set easywhitelist.* false
-      #   lp group default permission set easyauth.* false
-      #   lp group default permission set easyauth.commands.login true
-      #   lp creategroup admin
-      #   lp group admin permission set minecraft.command.ban-ip true
-      #   lp group admin permission set minecraft.command.pardon-ip true
-      #   lp group admin permission set minecraft.command.kick true
-      #   lp group admin permission set easyauth.commands.auth true
-      #   lp group admin permission set easyauth.commands.logout true
-      #   lp group admin permission set easywhitelist.commands.easyban true
-      #   lp group admin permission set easywhitelist.commands.easypardon true
-      #   lp group admin permission set easywhitelist.commands.easywhitelist true
 
 volumes:
   minecraft_data:
