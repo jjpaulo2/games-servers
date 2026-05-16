@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     pull_policy: always
     environment:
+      SYSTEM_NOTIFICATIONS: false
       APPRISE_URL: "${APPRISE_URL:-}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
