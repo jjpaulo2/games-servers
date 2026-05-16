@@ -71,14 +71,22 @@ services:
       loggifly.keywords.0: "Server empty for 60 seconds, pausing"
       loggifly.keywords.0.container_action: stop
       loggifly.keywords.0.container_action_cooldown: 30
-      loggifly.keywords.0.title_template: "⚠️ **Nenhum jogador online no servidor de Minecraft!**"
+      loggifly.keywords.0.title_template: "⚠️ **Nenhum jogador online!**"
       loggifly.keywords.0.message_template: "O servidor foi desligado automaticamente para economizar recursos."
 
       loggifly.keywords.1: "Thread RCON Listener started"
-      loggifly.keywords.1.title_template: "🟢 **Servidor de Minecraft ligado!**"
+      loggifly.keywords.1.title_template: "🟢 **Servidor ligado!**"
       loggifly.keywords.1.message_template: |
         Você já pode se conectar ao servidor `${SERVER_ADDRESS:-localhost}`
-        Ao entrar, você vai precisar rodar o comando `\login ${SERVER_PASSWORD:-password}`
+        Informe a senha `${SERVER_PASSWORD:-password}` para conseguir jogar.
+
+      loggifly.keywords.2.regex: "(?P<player>[-A-Za-z_]+) joined the game"
+      loggifly.keywords.2.title_template: "📈 **Jogador se conectou!**"
+      loggifly.keywords.2.message_template: "`{player}` entrou no jogo."
+
+      loggifly.keywords.3.regex: "(?P<player>[-A-Za-z_]+) left the game"
+      loggifly.keywords.3.title_template: "📉 **Jogador se desconectou!**"
+      loggifly.keywords.3.message_template: "`{player}` saiu do jogo."
 
       loggifly.container_events.0.event: "die"
       loggifly.container_events.0.title_template: "🔴 **Servidor de Minecraft desligado!**"
