@@ -2,7 +2,7 @@ version: 2
 
 containers:
   rules:
-    - container_name: minecraft
+    - container_name: minecraft-minecraft-1
       keywords:
         - keyword: "Preparing spawn area: 100%"
           title_template: "🎮 Servidor Minecraft ligado"
