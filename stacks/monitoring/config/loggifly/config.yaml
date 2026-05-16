@@ -5,7 +5,7 @@ containers:
     - match:
         include:
           container_names:
-            - minecraft-minecraft-1
+            - minecraft-minecraft
 
       keywords:
         - keyword: "Preparing spawn area: 100%"

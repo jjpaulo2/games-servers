@@ -1,37 +1,76 @@
-# Mine dos Crazy
+# Game servers
 
-[![Backup do Servidor](https://github.com/jjpaulo2/minedoscrazy/actions/workflows/backup.yaml/badge.svg)](https://github.com/jjpaulo2/minedoscrazy/actions/workflows/backup.yaml)
+Self-hosted games server infrastructure using Docker Compose, with auto-start/stop and Discord notifications.
 
-⛏️ Configuração do servidor de Minecraft dos "Eternos Pratas".
+## Stacks
 
-### Containers
+### `stacks/minecraft`
 
-Executados com Docker Compose para facilitar o setup em qualquer máquina. A definição de todos os containers encontra-se no arquivo [docker-compose.yaml](./docker-compose.yaml).
+Runs the Minecraft server using [itzg/minecraft-server](https://github.com/itzg/minecraft-server).
 
-#### [itzg/minecraft-server](https://hub.docker.com/r/itzg/minecraft-server/)
+- **Version:** 26.1
+- **Mod loader:** Fabric
+- **Mode:** Survival, PvP enabled, whitelist enforced, offline mode
+- **Max players:** 12
 
-Usado para prover o servidor do jogo em si.
+**Server-side mods (via Modrinth):**
 
-**Referências para configuração:**
+| Mod | Purpose |
+|-----|---------|
+| fabric-api | Fabric core API |
+| lithium | General-purpose server optimizations |
+| c2me-fabric | Chunk generation performance |
+| scalablelux | Lighting engine optimization |
+| ferrite-core | Memory usage reduction |
+| vmp-fabric | Server performance improvements |
+| krypton | Network stack optimization |
+| packet-fixer | Packet compatibility fixes |
+| disconnect-packet-fix | Fixes disconnect packet issues |
+| alternate-current | Redstone performance |
+| inventory-management | In-game inventory sorting |
+| easyauth | Authentication for offline mode |
+| easywhitelist | Whitelist management |
+| luckperms | Permission management |
+| vanilla-permissions | Vanilla-compatible permission nodes |
 
-- [Variáveis de ambiente](https://docker-minecraft-server.readthedocs.io/en/latest/variables/)
-- [Solução de problemas](https://docker-minecraft-server.readthedocs.io/en/latest/misc/troubleshooting/)
+---
 
-### Playbooks
+### `stacks/monitoring`
 
-Automações com Ansible usadas para facilitar algumas rotinas no servidor.
+Runs [Loggifly](https://github.com/clemcer/loggifly) to watch Minecraft container logs and send notifications via [Apprise](https://github.com/caronc/apprise) (Discord, Telegram, etc.).
 
-| Arquivo | Descrição |
-|-|-|
-| [ansible/atualizar.yaml](./ansible/atualizar.yaml) | Atualiza o servidor com a última versão deste repositório |
-| [ansible/backup.yaml](./ansible/backup.yaml) | Executa um backup dos dados do servidor/mundo |
+**Triggers:**
 
-### Pipelines
+| Event | Action |
+|-------|--------|
+| Server finishes loading (`Preparing spawn area: 100%`) | Sends a "server online" notification |
+| Server empty for 60 seconds | Stops the container and sends a "server offline" notification |
 
-Utilizam GitHub Actions para acionar alguma automação.
+The auto-stop behavior keeps resource usage low when no one is playing.
 
-| Arquivo | Descrição |
-|-|-|
-| [.github/workflows/ligar.yaml](./.github/workflows/ligar.yaml) | Liga a máquina que hospeda o servidor |
-| [.github/workflows/desligar.yaml](./.github/workflows/desligar.yaml) | Desliga a máquina que hospeda o servidor |
-| [.github/workflows/backup.yaml](./.github/workflows/backup.yaml) | Executa o playbook `ansible/backup.yaml` |
+---
+
+## Client mods
+
+The `scripts/download-minecraft-client-mods.sh` script fetches the recommended client-side mods from Modrinth and packages them into a `.zip` file ready to share with players.
+
+**Included client mods:** Sodium, Sodium Extra, Lithium, ImmediatelyFast, FerriteCore, Xaero's Minimap, ModMenu, Inventory Management, Entity Culling, Fabric API.
+
+Run it from the repo root:
+
+```bash
+bash scripts/download-minecraft-client-mods.sh
+```
+
+The zip is saved to `download/Mods <version>.zip`.
+
+---
+
+## Requirements
+
+- Docker and Docker Compose
+- `jq` and `curl` (for the client mods script)
+
+## License
+
+[MIT](LICENSE)

@@ -1,15 +1,5 @@
 services:
 
-  loggifly:
-    image: ghcr.io/clemcer/loggifly:v2
-    restart: unless-stopped
-    pull_policy: always
-    environment:
-      APPRISE_URL: "${APPRISE_URL:-}"
-    volumes:
-      - ./config/loggifly:/config
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-
   minecraft:
     image: itzg/minecraft-server:latest
     restart: unless-stopped
