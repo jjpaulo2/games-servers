@@ -71,7 +71,6 @@ services:
       loggifly.keywords.1: "Server empty for 60 seconds, pausing"
       loggifly.keywords.1.container_action: stop
       loggifly.keywords.1.container_action_cooldown: 60
-      loggifly.keywords.1.message_template: "Nenhum jogador online. Desligando servidor..."
 
       loggifly.container_events.0.event: "healthy"
       loggifly.container_events.0.title_template: "🟢 **Servidor de Minecraft ligado!**"
