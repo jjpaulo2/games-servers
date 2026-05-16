@@ -81,6 +81,7 @@ services:
         **Senha**: `${SERVER_PASSWORD:-password}`
 
       loggifly.container_events.0.event: "die"
+      loggifly.container_events.0.trigger_cooldown: 10
       loggifly.container_events.0.title_template: "🔴 **Servidor de Minecraft desligado!**"
       loggifly.container_events.0.message_template: "Já não é mais possível se conectar ao servidor."
 
