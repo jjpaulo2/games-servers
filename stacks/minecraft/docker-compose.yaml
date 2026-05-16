@@ -70,7 +70,6 @@ services:
 
       loggifly.keywords.0: "Server empty for 60 seconds, pausing"
       loggifly.keywords.0.container_action: stop
-      loggifly.keywords.0.container_action_cooldown: 60
       loggifly.keywords.0.title_template: "⚠️ **Nenhum jogador online no servidor de Minecraft!**"
       loggifly.keywords.0.message_template: "Desligando o servidor automaticamente..."
 
@@ -78,12 +77,10 @@ services:
       loggifly.keywords.1.title_template: "🟢 **Servidor de Minecraft ligado!**"
       loggifly.keywords.1.message_template: |
         Você já pode se conectar ao servidor.
-        **Host / IP**
-        `${SERVER_ADDRESS:-localhost}`
-        **Senha**
-        `${SERVER_PASSWORD:-password}`
+        **Endereço / IP**: `${SERVER_ADDRESS:-localhost}`
+        **Senha**: `${SERVER_PASSWORD:-password}`
 
-      loggifly.container_events.0.event: "stop"
+      loggifly.container_events.0.event: "die"
       loggifly.container_events.0.title_template: "🔴 **Servidor de Minecraft desligado!**"
       loggifly.container_events.0.message_template: "Já não é mais possível se conectar ao servidor."
 
