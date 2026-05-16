@@ -1,12 +1,15 @@
-containers:
-  minecraft:
-    keywords:
-      - keyword: "Preparing spawn area: 100%"
-        notification_title: "🎮 Servidor Minecraft ligado"
-        notification_message: "Você já pode se conectar ao servidor!"
+version: 2
 
-      - keyword: "Server empty for 60 seconds, pausing"
-        action: stop
-        action_cooldown: 60
-        notification_title: "🎮 Servidor Minecraft desligado"
-        notification_message: "Nenhum jogador online. O servidor foi encerrado."
+containers:
+  rules:
+    - container_name: minecraft
+      keywords:
+        - keyword: "Preparing spawn area: 100%"
+          title_template: "🎮 Servidor Minecraft ligado"
+          message_template: "Você já pode se conectar ao servidor!"
+
+        - keyword: "Server empty for 60 seconds, pausing"
+          container_action: stop
+          container_action_cooldown: 60
+          title_template: "🎮 Servidor Minecraft desligado"
+          message_template: "Nenhum jogador online. O servidor foi encerrado."
