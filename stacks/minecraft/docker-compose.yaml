@@ -68,27 +68,27 @@ services:
     labels:
       loggifly.monitor: "true"
 
-      loggifly.keywords.0: "Preparing spawn area: 100%" 
-      loggifly.keywords.0.title_template: "🟢 **Servidor de Minecraft ligado!**"
-      loggifly.keywords.0.message_template: |
+      loggifly.keywords.1: "Server empty for 60 seconds, pausing"
+      loggifly.keywords.1.container_action: stop
+      loggifly.keywords.1.container_action_cooldown: 60
+      loggifly.keywords.1.message_template: "Nenhum jogador online. Desligando servidor..."
+
+      loggifly.container_events.0.event: "healthy"
+      loggifly.container_events.0.title_template: "🟢 **Servidor de Minecraft ligado!**"
+      loggifly.container_events.0.message_template: |
         Você já pode se conectar ao servidor.
         **Host / IP**
         `${SERVER_ADDRESS:-localhost}`
         **Senha**
         `${SERVER_PASSWORD:-password}`
 
-      loggifly.keywords.1: "Server empty for 60 seconds, pausing"
-      loggifly.keywords.1.container_action: stop
-      loggifly.keywords.1.container_action_cooldown: 60
-      loggifly.keywords.1.message_template: "Nenhum jogador online. Desligando servidor..."
+      loggifly.container_events.1.event: "stop"
+      loggifly.container_events.1.title_template: "🔴 **Servidor de Minecraft desligado!**"
+      loggifly.container_events.1.message_template: "Já não é mais possível se conectar ao servidor."
 
-      loggifly.container_events.0.event: "stop,die,kill"
-      loggifly.container_events.0.title_template: "🔴 **Servidor de Minecraft desligado!**"
-      loggifly.container_events.0.message_template: "Já não é mais possível se conectar ao servidor."
-
-      loggifly.container_events.1.event: "crash,unhealthy"
-      loggifly.container_events.1.title_template: "🔴 **Servidor de Minecraft com erro!**"
-      loggifly.container_events.1.message_template: "Não foi possível iniciar o servidor."
+      loggifly.container_events.2.event: "unhealthy"
+      loggifly.container_events.2.title_template: "🔴 **Servidor de Minecraft com erro!**"
+      loggifly.container_events.2.message_template: "Não foi possível iniciar o servidor."
 
 volumes:
   minecraft_data:
