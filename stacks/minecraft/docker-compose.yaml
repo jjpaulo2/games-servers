@@ -82,11 +82,11 @@ services:
 
       loggifly.keywords.2.regex: "(?P<player>[-A-Za-z_]+) joined the game"
       loggifly.keywords.2.title_template: "📈 **Jogador se conectou!**"
-      loggifly.keywords.2.message_template: "`{player}` entrou no jogo."
+      loggifly.keywords.2.message_template: "`{{player}}` entrou no jogo."
 
       loggifly.keywords.3.regex: "(?P<player>[-A-Za-z_]+) left the game"
       loggifly.keywords.3.title_template: "📉 **Jogador se desconectou!**"
-      loggifly.keywords.3.message_template: "`{player}` saiu do jogo."
+      loggifly.keywords.3.message_template: "`{{player}}` saiu do jogo."
 
       loggifly.container_events.0.event: "die"
       loggifly.container_events.0.title_template: "🔴 **Servidor de Minecraft desligado!**"
