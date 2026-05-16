@@ -69,13 +69,16 @@ services:
       loggifly.monitor: "true"
 
       loggifly.keywords.0: "Preparing spawn area: 100%" 
-      loggifly.keywords.0.title_template: "🎮 **Servidor de Minecraft ligado!**"
-      loggifly.keywords.0.message_template: "Você já pode se conectar ao servidor."
+      loggifly.keywords.0.title_template: "🟢 **Servidor de Minecraft ligado!**"
+      loggifly.keywords.0.message_template: |
+        Você já pode se conectar ao servidor.
+        **Host / IP**: `${SERVER_ADDRESS:-localhost}`
+        **Senha**: `${SERVER_PASSWORD:-password}`
 
       loggifly.keywords.1: "Server empty for 60 seconds, pausing"
       loggifly.keywords.1.container_action: stop
       loggifly.keywords.1.container_action_cooldown: 60
-      loggifly.keywords.1.title_template: "🎮 **Servidor de Minecraft desligado!**"
+      loggifly.keywords.1.title_template: "🔴 **Servidor de Minecraft desligado!**"
       loggifly.keywords.1.message_template: "Nenhum jogador online. O servidor foi encerrado automaticamente."
 
 volumes:
