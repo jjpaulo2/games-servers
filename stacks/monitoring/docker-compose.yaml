@@ -7,5 +7,4 @@ services:
     environment:
       APPRISE_URL: "${APPRISE_URL:-}"
     volumes:
-      - ./config/loggifly:/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
