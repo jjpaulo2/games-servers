@@ -72,8 +72,12 @@ services:
       loggifly.keywords.0.title_template: "🟢 **Servidor de Minecraft ligado!**"
       loggifly.keywords.0.message_template: |
         Você já pode se conectar ao servidor.
-        **Host / IP**: `${SERVER_ADDRESS:-localhost}`
-        **Senha**: `${SERVER_PASSWORD:-password}`
+        
+        > **Host / IP**
+        > `${SERVER_ADDRESS:-localhost}`
+        
+        > **Senha**
+        > `${SERVER_PASSWORD:-password}`
 
       loggifly.keywords.1: "Server empty for 60 seconds, pausing"
       loggifly.keywords.1.container_action: stop
