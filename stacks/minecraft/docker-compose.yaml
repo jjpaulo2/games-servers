@@ -88,9 +88,7 @@ services:
 
       loggifly.keywords.1: "Thread RCON Listener started"
       loggifly.keywords.1.title_template: "🟢 **Servidor ligado!**"
-      loggifly.keywords.1.message_template: |
-        Você já pode se conectar ao servidor `${SERVER_ADDRESS:-localhost}`
-        Informe a senha `${SERVER_PASSWORD:-password}` para conseguir jogar.
+      loggifly.keywords.1.message_template: "Você já pode se conectar ao servidor `${SERVER_ADDRESS:-localhost}`. Use a senha `${SERVER_PASSWORD:-password}` para conseguir jogar."
 
       loggifly.keywords.2.regex: "(?P<player>[-A-Za-z0-9_]+) joined the game"
       loggifly.keywords.2.title_template: "📈 **Jogador se conectou!**"
@@ -101,11 +99,11 @@ services:
       loggifly.keywords.3.message_template: "`{{player}}` saiu do jogo."
 
       loggifly.container_events.0.event: "die"
-      loggifly.container_events.0.title_template: "🔴 **Servidor de Minecraft desligado!**"
+      loggifly.container_events.0.title_template: "🔴 **Servidor desligado!**"
       loggifly.container_events.0.message_template: "Já não é mais possível se conectar ao servidor."
 
       loggifly.container_events.1.event: "unhealthy"
-      loggifly.container_events.1.title_template: "⚠️ **Não foi possivel iniciar o servidor de Minecraft!**"
+      loggifly.container_events.1.title_template: "⚠️ **Não foi possivel iniciar o servidor!**"
       loggifly.container_events.1.message_template: "Ocorreu um erro inesperado durante a inicialização do servidor."
 
 volumes:
