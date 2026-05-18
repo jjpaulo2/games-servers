@@ -90,11 +90,11 @@ services:
       loggifly.keywords.1.title_template: "🟢 **Servidor ligado!**"
       loggifly.keywords.1.message_template: "Você já pode se conectar ao servidor `${SERVER_ADDRESS:-localhost}`. Use a senha `${SERVER_PASSWORD:-password}` para conseguir jogar."
 
-      loggifly.keywords.2.regex: "(?P<player>[-A-Za-z0-9_]+) joined the game"
+      loggifly.keywords.2.regex: "[Server thread/INFO]: (?P<player>.*) joined the game"
       loggifly.keywords.2.title_template: "📈 **Jogador se conectou!**"
       loggifly.keywords.2.message_template: "`{{player}}` entrou no jogo."
 
-      loggifly.keywords.3.regex: "(?P<player>[-A-Za-z0-9_]+) left the game"
+      loggifly.keywords.3.regex: "[Server thread/INFO]: (?P<player>.*) left the game"
       loggifly.keywords.3.title_template: "📉 **Jogador se desconectou!**"
       loggifly.keywords.3.message_template: "`{{player}}` saiu do jogo."
 
