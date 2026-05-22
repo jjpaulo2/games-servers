@@ -1,0 +1,34 @@
+name: Publish Docker images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    strategy:
+      matrix:
+        image:
+          - minecraft-utils
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image (${{ matrix.image }})
+        uses: docker/build-push-action@v6
+        with:
+          context: stacks/${{ matrix.image }}
+          push: true
+          tags: ghcr.io/${{ github.repository }}/${{ matrix.image }}:latest

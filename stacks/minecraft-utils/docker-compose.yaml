@@ -1,0 +1,26 @@
+services:
+
+  download-mods:
+    image: ghcr.io/jjpaulo2/games-servers/minecraft-utils:latest
+    restart: no
+    pull_policy: always
+
+    volumes:
+      - ./download:/download
+
+    environment:
+      MINECRAFT_VERSION: ${MINECRAFT_VERSION:-26.1}
+      MOD_LOADER: "${MOD_LOADER:-fabric}"
+      MODS: |
+        fabric-api
+        xaeros-minimap
+        sodium
+        sodium-extra
+        modmenu
+        lithium
+        inventory-management
+        immediatelyfast
+        ferrite-core
+        entity-culling      
+
+    command: sh -c "cd /downloads && download-mods"
