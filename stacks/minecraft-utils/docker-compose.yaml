@@ -7,7 +7,7 @@ services:
 
     volumes:
       - ./scripts:/srv/scripts
-      - minecraft-download-mods:/srv/download
+      - mods:/srv/download
 
     environment:
       MINECRAFT_VERSION: ${MINECRAFT_VERSION}
@@ -28,4 +28,4 @@ services:
 
 
 volumes:
-  minecraft-download-mods:
+  mods:
