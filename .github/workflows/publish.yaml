@@ -29,6 +29,6 @@ jobs:
       - name: Build and push Docker image (${{ matrix.image }})
         uses: docker/build-push-action@v6
         with:
-          context: stacks/${{ matrix.image }}
+          context: dockerfiles/${{ matrix.image }}
           push: true
           tags: ghcr.io/${{ github.repository }}/${{ matrix.image }}:latest
