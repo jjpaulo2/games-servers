@@ -13,8 +13,10 @@ COLOR_RESET="\033[0m";
 COLOR_GREEN="\033[32m";
 COLOR_RED="\033[31m";
 
+url_decode() { printf '%b' "${1//%/\\x}"; }
+
+rm -rf "download/$MINECRAFT_VERSION";
 mkdir -p "download/$MINECRAFT_VERSION";
-rm -f "download/$MINECRAFT_VERSION**";
 cd "download/$MINECRAFT_VERSION";
 
 echo "[*] Fetching mods for $MOD_LOADER and Minecraft $MINECRAFT_VERSION...";
@@ -28,7 +30,8 @@ for mod in $MODS; do
         echo -e "${COLOR_RED}[!] No version found for $mod, skipping.${COLOR_RESET}";
         continue;
     else
-        curl --silent --show-error --fail -L -O "$download_url";
+        file_name=$(url_decode $(basename "$download_url"));
+        curl --silent --show-error --fail -L -o "$file_name" "$download_url";
         echo -e "${COLOR_GREEN}[+] $mod has been downloaded.${COLOR_RESET}";
     fi;
 done;
