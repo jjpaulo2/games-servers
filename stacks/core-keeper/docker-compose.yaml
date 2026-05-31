@@ -11,7 +11,6 @@ services:
       WORLD_NAME: Hora da Pomba
       WORLD_MODE: 0
       MAX_PLAYERS: 10
-      PASSWORD: ${SERVER_PASSWORD}
       ACTIVATE_ALL_CONTENT: true
 
       DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
@@ -19,7 +18,7 @@ services:
       DISCORD_PLAYER_LEAVE_ENABLED: false
       DISCORD_SERVER_START_ENABLED: true
       DISCORD_SERVER_START_TITLE: Servidor ligado!
-      DISCORD_SERVER_START_MESSAGE: Ingresse na partida de ID `$${join_string}` usando a senha `${SERVER_PASSWORD}`.
+      DISCORD_SERVER_START_MESSAGE: Ingresse no mundo `$${world_name}` usando o ID de partida `$${gameid}`.
       DISCORD_SERVER_STOP_ENABLED: true
       DISCORD_SERVER_STOP_TITLE: Servidor desligado!
       DISCORD_SERVER_STOP_MESSAGE: Já não é mais possível se conectar ao servidor.
