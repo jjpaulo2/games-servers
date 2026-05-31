@@ -23,3 +23,7 @@ services:
       DISCORD_SERVER_STOP_ENABLED: true
       DISCORD_SERVER_STOP_TITLE: 🔴 Servidor desligado!
       DISCORD_SERVER_STOP_MESSAGE: Já não é mais possível se conectar ao servidor.
+
+volumes:
+  server:
+  data:
