@@ -22,8 +22,8 @@ services:
       TZ: America/Sao_Paulo
 
       DISCORD_WEBHOOK: ${DISCORD_WEBHOOK:-}
-      PRE_BOOTSTRAP_HOOK: 'curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"content\":\":green_circle: **Servidor ligado!** \n Ingresse no mundo `$SERVER_NAME` usando o endereço `$SERVER_ADDRESS` e a senha `$SERVER_PASS`.\"}" "$$DISCORD_WEBHOOK"'
-      PRE_SERVER_SHUTDOWN_HOOK: 'curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"content\":\":red_circle: **Servidor desligado!** \n Já não é mais possível se conectar ao servidor.\"}" "$$DISCORD_WEBHOOK"'
+      PRE_BOOTSTRAP_HOOK: 'curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"content\":\":green_circle: **Servidor ligado!** \nVocê já pode se conectar ao servidor `$$SERVER_ADDRESS` usando a senha `$$SERVER_PASS`.\"}" "$$DISCORD_WEBHOOK"'
+      PRE_SERVER_SHUTDOWN_HOOK: 'curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"content\":\":red_circle: **Servidor desligado!** \nJá não é mais possível se conectar ao servidor.\"}" "$$DISCORD_WEBHOOK"'
     
 volumes:
   config:
