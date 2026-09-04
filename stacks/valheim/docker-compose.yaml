@@ -22,7 +22,7 @@ services:
       TZ: America/Sao_Paulo
 
       DISCORD_WEBHOOK: ${DISCORD_WEBHOOK:-}
-      PRE_BOOTSTRAP_HOOK: 'curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"content\":\":green_circle: **Servidor ligado!** \nVocê já pode se conectar ao servidor `$$(eval echo $$SERVER_ADDRESS)` usando a senha `$$(eval echo $$SERVER_PASS)`.\"}" "$$DISCORD_WEBHOOK"'
+      PRE_BOOTSTRAP_HOOK: 'curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"content\":\":green_circle: **Servidor ligado!** \nVocê já pode se conectar ao servidor `$$(eval echo $$SERVER_ADDRESS)` usando a senha `$$(eval echo $$SERVER_PASSWORD)`.\"}" "$$DISCORD_WEBHOOK"'
       PRE_SERVER_SHUTDOWN_HOOK: 'curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"content\":\":red_circle: **Servidor desligado!** \nJá não é mais possível se conectar ao servidor.\"}" "$$DISCORD_WEBHOOK"'
     
 volumes:
