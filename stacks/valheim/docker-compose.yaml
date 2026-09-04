@@ -1,0 +1,28 @@
+services:
+
+  server:
+    image: ghcr.io/community-valheim-tools/valheim-server:latest
+    restart: unless-stopped
+    ports:
+      - "2456:2456/udp"
+      - "2457:2457/udp"
+    environment:
+      SERVER_NAME: Hora da Pomba
+      SERVER_PASS: ${SERVER_PASSWORD:-password}
+      SERVER_ADDRESS: ${SERVER_ADDRESS:-localhost}
+      SERVER_PUBLIC: false
+      CROSSPLAY: true
+      ADMINLIST_IDS: ${ADMINLIST_IDS:-}
+      BACKUPS: false
+      PUBLIC_TEST: false
+      VALHEIM_PLUS: false
+      TZ: America/Sao_Paulo
+      DISCORD_WEBHOOK: ${DISCORD_WEBHOOK:-}
+      DISCORD_MESSAGE: Ingresse no mundo `$$SERVER_NAME` usando o endereço `$$SERVER_ADDRESS` e a senha `$$SERVER_PASS`.
+    volumes:
+      - config:/config
+      - data:/opt/valheim
+
+volumes:
+  config:
+  data:
