@@ -22,8 +22,8 @@ services:
       TZ: America/Sao_Paulo
 
       DISCORD_WEBHOOK: ${DISCORD_WEBHOOK:-}
-      DISCORD_STARTUP_MESSAGE: ':green_circle: **Servidor ligado!**\nIngresse no mundo `$$SERVER_NAME` usando o endereço `$$SERVER_ADDRESS` e a senha `$$SERVER_PASS`.'
-      DISCORD_SHUTDOWN_MESSAGE: ':red_circle: **Servidor desligado!**\nJá não é mais possível se conectar ao servidor.'
+      DISCORD_STARTUP_MESSAGE: ':green_circle: **Servidor ligado!** \n Ingresse no mundo `$SERVER_NAME` usando o endereço `$SERVER_ADDRESS` e a senha `$SERVER_PASS`.'
+      DISCORD_SHUTDOWN_MESSAGE: ':red_circle: **Servidor desligado!** \n Já não é mais possível se conectar ao servidor.'
 
       PRE_BOOTSTRAP_HOOK: 'curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"content\":\"$$(eval echo $$DISCORD_STARTUP_MESSAGE)\"}" "$$DISCORD_WEBHOOK"'
       PRE_SERVER_SHUTDOWN_HOOK: 'curl -sfSL -X POST -H "Content-Type: application/json" -d "{\"content\":\"$$(eval echo $$DISCORD_SHUTDOWN_MESSAGE)\"}" "$$DISCORD_WEBHOOK"'
